@@ -22,7 +22,7 @@ interface INode {
  * 
  * for the purpose of simplification, we are assuming the user is only searching from beginning of a word
  */
-class SearchTermService {
+export class SearchTermService {
   // trie data structure mapping words to file paths
   indexes: INode;
 
@@ -33,6 +33,10 @@ class SearchTermService {
 
   /**
    * Search the index for the file locations containing the term
+   * 
+   * I realized this after the allotted time, but the prompt was asking for all the possible words and their locations.
+   * This function will have to perform depth first search starting the final node
+   * (the node after the for-loop) and retrieve all the branching words and their locations
    */
   search(term: string) {
     let currentNode = this.indexes;
